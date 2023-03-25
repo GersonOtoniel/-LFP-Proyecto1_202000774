@@ -1,0 +1,6 @@
+
+            graph{
+            
+             subgraph s0  { "Suma 9.82"   "Suma 9.82"  --  4.5    "Suma 9.82" --5.32 } subgraph s1  { "Resta -995.4"   "Resta -995.4"  --  4.6    "Resta -995.4" --  "Potencia 1000.0"      "Potencia 1000.0"  --  10.0   
+   "Potencia 1000.0" --3.0  } subgraph s2  { "Suma 86.3"   "Suma 86.3"  --   "Potencia 81.0"     "Suma 86.3" --5.3    "Potencia 81.0"  --  9.0   
+   "Potencia 81.0" --2.0  }}
