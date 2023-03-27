@@ -1,6 +1,29 @@
 
             graph{
             
-             subgraph s0  { "Suma 9.82"   "Suma 9.82"  --  4.5    "Suma 9.82" --5.32 } subgraph s1  { "Resta -995.4"   "Resta -995.4"  --  4.6    "Resta -995.4" --  "Potencia 1000.0"      "Potencia 1000.0"  --  10.0   
-   "Potencia 1000.0" --3.0  } subgraph s2  { "Suma 86.3"   "Suma 86.3"  --   "Potencia 81.0"     "Suma 86.3" --5.3    "Potencia 81.0"  --  9.0   
-   "Potencia 81.0" --2.0  }}
+             subgraph s0  { n100[label="Suma  9.82"]  n100--n200  n100--n300  n200[label = "4.5"]  n300[label = "5.32"] } subgraph s1  { n101[label="Resta  515.0"]  n101--n102  n101--n103  n102[label="Multiplicacion  1515.0"]  n103[label="Potencia  1000.0"]   n103--n202  
+  n103--n104  
+   n104--n203  
+  n104--n105  
+   n105--n204  
+  n105--n302  
+  
+  
+ n204[label = "2.0"]  
+  n302[label = "1.0"]   
+  
+ n203[label = "9.0"]  
+  n105[label="Multiplicacion  2.0"]   
+  
+ n202[label = "10.0"]  
+  n104[label="Raiz  3.0"]    n102--n201  
+  n102--n301  
+ 
+  
+ n201[label = "505.0"]  
+  n301[label = "3.0"]  } subgraph s2  { n106[label="Suma  6.213996663600558"]  n106--n107  n106--n303  n107[label="Seno  0.8939966636005579"]  n303[label = "5.32"]   n107--n205  
+  
+ 
+  
+ n205[label = "90.0"]  
+  }}

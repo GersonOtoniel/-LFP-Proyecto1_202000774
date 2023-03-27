@@ -35,13 +35,14 @@ def buscar():
 
 buscar()
 """
+i = 4
+j = 5
+hola = f''' {i} hola {j} '''
 
-x = '21646523465.4654'
-y = '78'
-d = 'hola'
-#print(x.is_integer())
-if not d.replace('.','',1).isnumeric():
-    print("lo logre")
-else:
-    print("ffffff")
-#print(x.replace('.','',1).isnumeric())
+
+
+k = 0
+while k <= len(hola)-1:
+    char = hola[k]
+    print(k)
+    k+=1

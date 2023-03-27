@@ -23,8 +23,10 @@ class Interfaz:
         Button(self.frame1,text="Errores", bg="#ECB365", fg="black", font = ("Lemon Juice",33), bd = 0, padx=28).place(x=600,y=300)
         Button(self.frame1,text="Salir", bg="#0E8388", fg="#ffffff", font=("Lemon Juice",33),anchor="center", bd=0,
                 command= self.pantalla_principal.destroy,padx=52).place(x=600,y=400)
-        self.mensaje = Text(self.frame1,width=30, height=15, font=("Lemon Juice", 22), bg="black", fg="light green", bd=0)
+        self.mensaje = Text(self.frame1,width=30, height=15, font=("Lemon Juice", 22), fg="light green", bd=0)
         self.mensaje.place(x=100, y=50)
+        Button(self.frame1, text="obtener", command=self.obtener).place(x=10,y=10)
+       
         
         self.frame1.mainloop()
     
@@ -34,14 +36,20 @@ class Interfaz:
             self.text = file
             self.openfile = open(self.text, encoding="utf-8")
             self.archivo = self.openfile.read()
-            self.mensaje.insert(INSERT, self.archivo)    
+            self.mensaje.insert(1.0, self.archivo)
+            self.obtener()    
         except:
             print('Error, no se ha seleccionado ningún archivo')
         #print(self.archivo)
 
     def analizar(self):
         j = Analizador()
-        j.Analisis(self.archivo)
+        j.Analisis(self.leer)
+        photo = PhotoImage(file='./ejemplografica.png')
+        imagen = self.mensaje.image_create(1.0, image=photo)
+        imagen.pack()
 
-
+    def obtener(self):
+        self.leer = self.mensaje.get(1.0,END)
+        print(self.leer)
 p = Interfaz()
