@@ -2,6 +2,7 @@
 from Operaciones import Operaciones_Aritmeticas
 from Operaciones import operaciones_trigonometricas
 import os
+from Errores import Error
 
 
 class Analizador:
@@ -20,7 +21,12 @@ class Analizador:
         self.graph = '''
             graph{
             
-            '''     
+            '''
+        self.error = '''
+            {
+        '''     
+        self.listaerrores = []
+        self.alfabeto = list(map(chr, range(97,123)))
 
     def lista_lexemas(self):
         return self.lista_de_lexemas
@@ -28,9 +34,9 @@ class Analizador:
     def Analisis(self, texto2):
         count1 = 0
         count2 = 0
-        count3 = 0
-        operaciones = ''
-        lista_cada_operacion = []
+        count3 = ''
+        op = 0
+        lexema2 =''
         while texto2:
             char = texto2[count1]
             if char == "\n":
@@ -49,6 +55,17 @@ class Analizador:
                 self.lista_de_lexemas.append(char)
             if count2 == 1:
                 lexema = self.armar_lexemas(texto2[count1:])
+                for t in lexema:
+                    s = t.lower()
+                    if s not in self.alfabeto:
+                        if t != '-' and t !='1' and t!='2' and t!=' ':
+                            lexema2+=t
+                if lexema2:
+                    error = Error.lexemas(self, lexema, self.fila, self.columna,op)
+                    self.listaerrores.append(error)
+                    op+=1
+                    lexema2=''
+            
                 self.lista_de_lexemas.append(lexema)
                 self.columna+=len(lexema)
                 count1+=len(lexema)
@@ -64,6 +81,7 @@ class Analizador:
         #   print(i)
         #print(lista_de_lexemas)
         self.añadir()
+        self.errores()
         #print("numero de filas: " + str(self.fila) + " numero de columnas: " + str(self.columna))
         #self.errores(self.lista_de_lexemas)
 
@@ -310,10 +328,19 @@ class Analizador:
 
         os.system('dot -Tpng ejemplografica.dot -o ejemplografica.png') 
 
+    def errores(self):
+        y = 0
+        while y<=len(self.listaerrores)-1:
+            self.error+=self.listaerrores[y]
+            #print(self.listaerrores[y])
+            y+=1
+        return self.error
+
+
 Entrada = '''
 {
 {
-    "Operacion":"Suma"
+    "Oper?acion":"Suma"
     "Valor1":4.5
     "Valor2":5.3 
 },
@@ -443,5 +470,5 @@ dificil = '''
 '''
 
 #p = Analizador()
-#p.Analisis(dificil)
+#p.Analisis(Entrada)
 

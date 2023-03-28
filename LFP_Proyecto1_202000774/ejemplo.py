@@ -35,14 +35,10 @@ def buscar():
 
 buscar()
 """
-i = 4
-j = 5
-hola = f''' {i} hola {j} '''
-
-
-
-k = 0
-while k <= len(hola)-1:
-    char = hola[k]
-    print(k)
-    k+=1
+i = 'Hola'
+j =''
+lista = ['h','o','l','a']
+u = ''
+for k in i:
+        if k.lower() not in lista: 
+            print('si')
